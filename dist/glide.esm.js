@@ -1,6 +1,6 @@
 /*!
  * Glide.js v3.4.1
- * (c) 2013-2019 Jędrzej Chałubek <jedrzej.chalubek@gmail.com> (http://jedrzejchalubek.com/)
+ * (c) 2013-2021 Jędrzej Chałubek <jedrzej.chalubek@gmail.com> (http://jedrzejchalubek.com/)
  * Released under the MIT License.
  */
 
@@ -1254,43 +1254,6 @@ function Gaps (Glide, Components, Events) {
   return Gaps;
 }
 
-/**
- * Finds siblings nodes of the passed node.
- *
- * @param  {Element} node
- * @return {Array}
- */
-function siblings(node) {
-  if (node && node.parentNode) {
-    var n = node.parentNode.firstChild;
-    var matched = [];
-
-    for (; n; n = n.nextSibling) {
-      if (n.nodeType === 1 && n !== node) {
-        matched.push(n);
-      }
-    }
-
-    return matched;
-  }
-
-  return [];
-}
-
-/**
- * Checks if passed node exist and is a valid element.
- *
- * @param  {Element} node
- * @return {Boolean}
- */
-function exist(node) {
-  if (node && node instanceof window.HTMLElement) {
-    return true;
-  }
-
-  return false;
-}
-
 var TRACK_SELECTOR = '[data-glide-el="track"]';
 
 function Html (Glide, Components) {
@@ -1330,11 +1293,7 @@ function Html (Glide, Components) {
         r = document.querySelector(r);
       }
 
-      if (exist(r)) {
-        Html._r = r;
-      } else {
-        warn('Root element must be a existing Html node');
-      }
+      Html._r = r;
     }
   });
 
@@ -1355,11 +1314,7 @@ function Html (Glide, Components) {
      * @return {Object}
      */
     set: function set(t) {
-      if (exist(t)) {
-        Html._t = t;
-      } else {
-        warn('Could not find track element. Please use ' + TRACK_SELECTOR + ' attribute.');
-      }
+      Html._t = t;
     }
   });
 
@@ -1653,6 +1608,29 @@ function Sizes (Glide, Components, Events) {
   });
 
   return Sizes;
+}
+
+/**
+ * Finds siblings nodes of the passed node.
+ *
+ * @param  {Element} node
+ * @return {Array}
+ */
+function siblings(node) {
+  if (node && node.parentNode) {
+    var n = node.parentNode.firstChild;
+    var matched = [];
+
+    for (; n; n = n.nextSibling) {
+      if (n.nodeType === 1 && n !== node) {
+        matched.push(n);
+      }
+    }
+
+    return matched;
+  }
+
+  return [];
 }
 
 function Build (Glide, Components, Events) {

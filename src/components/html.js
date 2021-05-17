@@ -1,5 +1,4 @@
 import { warn } from '../utils/log'
-import { exist } from '../utils/dom'
 import { define } from '../utils/object'
 import { isString } from '../utils/unit'
 
@@ -41,11 +40,7 @@ export default function (Glide, Components) {
         r = document.querySelector(r)
       }
 
-      if (exist(r)) {
-        Html._r = r
-      } else {
-        warn('Root element must be a existing Html node')
-      }
+      Html._r = r
     }
   })
 
@@ -65,11 +60,7 @@ export default function (Glide, Components) {
      * @return {Object}
      */
     set (t) {
-      if (exist(t)) {
-        Html._t = t
-      } else {
-        warn(`Could not find track element. Please use ${TRACK_SELECTOR} attribute.`)
-      }
+      Html._t = t
     }
   })
 

@@ -21,16 +21,3 @@ export function siblings (node) {
   return []
 }
 
-/**
- * Checks if passed node exist and is a valid element.
- *
- * @param  {Element} node
- * @return {Boolean}
- */
-export function exist (node) {
-  if (node && node instanceof window.HTMLElement) {
-    return true
-  }
-
-  return false
-}
